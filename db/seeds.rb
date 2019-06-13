@@ -19,6 +19,6 @@ Product.create!(
         solution makes the most snese for your needs.
         </p>
     },
-    image_url: '7apps.jpg',
+    image_url: 'product1.jpeg',
     price: 62.00
 )
