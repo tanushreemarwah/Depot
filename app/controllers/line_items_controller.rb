@@ -30,7 +30,9 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     # get product from product_id
+    # create line_item by using smart add_product method
     product = Product.find(params[:product_id])
+    @line_item = @cart.add_product(product)
     # build cart on this product 
     @line_item = @cart.line_items.build(product: product)
 

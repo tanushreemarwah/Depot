@@ -18,6 +18,3 @@ module CurrentCart
             session[:counter] += 1
         end
 end
-
-
-          
