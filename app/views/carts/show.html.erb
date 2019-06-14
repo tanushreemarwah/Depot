@@ -1,6 +1,7 @@
 <% if notice %>
 <aside id="notice"><%= notice %></aside>
 <% end %>
+<p>You visited the page <%= @count %> times %></p>
 <h2>Your Pragmatic Cart</h2>
 <ul>
     <% @cart.line_items.each do |item| %>

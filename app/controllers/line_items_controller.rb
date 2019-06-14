@@ -1,11 +1,14 @@
 class LineItemsController < ApplicationController
   include CurrentCart
+  before_action :set_visits, only: [:show]
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
   # GET /line_items.json
   def index
+    increment_count
+    set_visits
     @line_items = LineItem.all
   end
 
@@ -26,12 +29,14 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
+    # get product from product_id
     product = Product.find(params[:product_id])
+    # build cart on this product 
     @line_item = @cart.line_items.build(product: product)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -74,4 +79,5 @@ class LineItemsController < ApplicationController
     def line_item_params
       params.require(:line_item).permit(:product_id, :cart_id)
     end
+
 end
