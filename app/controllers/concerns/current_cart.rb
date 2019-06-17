@@ -3,6 +3,7 @@ module CurrentCart
         def set_cart 
 
             @cart = Cart.find(session[:cart_id])
+
             # if cart not found, then create cart => rescue
         rescue ActiveRecord::RecordNotFound
             @cart = Cart.create   
@@ -17,4 +18,6 @@ module CurrentCart
             session[:counter] ||= 0
             session[:counter] += 1
         end
+
+       
 end
