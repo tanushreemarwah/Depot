@@ -16,7 +16,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should prompt login" do
+  test "should prompt for login" do
     get login_url
     assert_response :success
   end
@@ -28,14 +28,14 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_equal tanushree.id, session[:user_id]
   end
 
-  def "should fail login" do
+  test "should fail login" do
     tanushree = users(:one)
     post login_url, params: { name: tanushree.name, password: 'wrong'}
     assert_redirected_to login_url
   end
 
-  def "should logout" do
-    delete login_url
+  test "should logout" do
+    delete logout_url
     assert_redirected_to store_index_url
   end 
 end
