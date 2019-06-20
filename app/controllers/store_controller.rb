@@ -1,6 +1,7 @@
 class StoreController < ApplicationController
   include CurrentCart
   before_action :set_cart, :set_visits
+  
   skip_before_action :authorize
   def index
     @product = Product.order(:title)
@@ -16,5 +17,5 @@ class StoreController < ApplicationController
   def set_visits
     @counts = session[:counter]
   end
- 
+
 end

@@ -13,7 +13,7 @@ class Product < ApplicationRecord
 
     private
         def ensure_not_referenced_by_any_line_item
-            unless line_items.emoty?
+            unless line_items.empty?
                 errors.add(:base, 'Line Items Present')
                 throw :abort
             end

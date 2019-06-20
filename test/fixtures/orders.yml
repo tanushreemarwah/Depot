@@ -4,7 +4,7 @@ one:
   name: Tanushree Marwah
   address: MyText
   email: tanushree@gmail.com
-  pay_type: cheque
+  pay_type: Cheque
 
 two:
   name: MyString

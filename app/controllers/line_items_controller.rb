@@ -66,8 +66,8 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    # @line_item.destroy if @line_item.product.id == session[:product_id]
-@line_item.destroy
+    @line_item.destroy if @line_item.product.id == session[:product_id]
+    # @line_item.delete_product(product) if @line_item.product.id == session[:product_id]
     respond_to do |format|
       # format.html { redirect_to cart_url, notice: 'Line item was successfully destroyed.' }
       format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
